@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network Graph System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Social Network Graph System</h1>
+            <p class="subtitle">C++ Backend with DSA Algorithms | BFS, DFS, Dijkstra</p>
+        </header>
+
+        <div class="stats-panel">
+            <h2>📊 Network Statistics</h2>
+            <div id="statistics" class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Users</div>
+                    <div class="stat-value" id="totalUsers">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Connections</div>
+                    <div class="stat-value" id="totalEdges">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg Connections</div>
+                    <div class="stat-value" id="avgConnections">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Components</div>
+                    <div class="stat-value" id="components">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="section">
+                    <h2>👥 Users</h2>
+                    <div class="action-buttons">
+                        <button onclick="loadUsers()" class="btn btn-primary">Refresh Users</button>
+                        <button onclick="showAddUserForm()" class="btn btn-success">Add User</button>
+                    </div>
+                    <div id="usersList" class="users-list"></div>
+                </div>
+
+                <div class="section">
+                    <h2>🔗 Add Friendship</h2>
+                    <div class="form-group">
+                        <input type="number" id="friendUserId1" placeholder="User ID 1" class="input">
+                        <input type="number" id="friendUserId2" placeholder="User ID 2" class="input">
+                        <button onclick="addFriendship()" class="btn btn-primary">Connect Users</button>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🗺️ Find Path (BFS Algorithm)</h2>
+                    <div class="form-group">
+                        <input type="number" id="pathUserId1" placeholder="From User ID" class="input">
+                        <input type="number" id="pathUserId2" placeholder="To User ID" class="input">
+                        <button onclick="findPath()" class="btn btn-info">Find Shortest Path</button>
+                    </div>
+                    <div id="pathResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="section">
+                    <h2>📈 Graph Visualization</h2>
+                    <div id="networkGraph" class="graph-container"></div>
+                    <div class="graph-controls">
+                        <button onclick="visualizeGraph()" class="btn btn-secondary">Refresh Graph</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="addUserModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Add New User</h2>
+                <form onsubmit="createUser(event)">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" id="userName" required class="input">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="userEmail" required class="input">
+                    </div>
+                    <div class="form-group">
+                        <label>Profile:</label>
+                        <input type="text" id="userProfile" class="input">
+                    </div>
+                    <button type="submit" class="btn btn-success">Create User</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
